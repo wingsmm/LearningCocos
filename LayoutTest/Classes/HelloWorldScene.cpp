@@ -50,25 +50,25 @@ bool HelloWorld::init()
     
     
     Button * bt2 = dynamic_cast<Button *>(rootNode->getChildByName("Button_2"));
-    
-    bt2->addTouchEventListener([&](Ref * p,Widget::TouchEventType type){
-    
-        auto layoutParameter = LinearLayoutParameter::create();
-        layoutParameter->setGravity(LinearLayoutParameter::LinearGravity::RIGHT);
-        ScrollView * scrollView = (ScrollView *)rootNode->getChildByName("ScrollView_1");
-        Widget * widget = makeWords();
-        widget->setLayoutParameter(layoutParameter);
-        scrollView->addChild(widget);
-        
-        log("...%zd",scrollView->getChildren().size());
-
-    
-    });
+    bt2->addTouchEventListener(CC_CALLBACK_2(HelloWorld::addRight, this));
     
 
     return true;
 }
 
+
+
+void HelloWorld::addRight(Ref * p,Widget::TouchEventType type)
+{
+    auto layoutParameter = LinearLayoutParameter::create();
+    layoutParameter->setGravity(LinearLayoutParameter::LinearGravity::RIGHT);
+    ScrollView * scrollView = (ScrollView *)rootNode->getChildByName("ScrollView_1");
+    Widget * widget = makeWords();
+    widget->setLayoutParameter(layoutParameter);
+    scrollView->addChild(widget);
+    
+    log("...%zd",scrollView->getChildren().size());
+}
 
 
 

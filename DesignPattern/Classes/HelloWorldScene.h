@@ -2,16 +2,15 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "SceneB.h"
 
-USING_NS_CC;
-
-using namespace cocostudio::timeline;
 using namespace cocos2d::ui;
-using namespace cocostudio;
 
-class HelloWorld : public cocos2d::Layer
+
+class HelloWorld : public cocos2d::Layer ,SceneBDelegator
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -22,13 +21,19 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    ~HelloWorld();
+
     
-    Node * rootNode;
     
-    void addLeft();
-    void addRight(Ref * p,Widget::TouchEventType type);
     
-    ui::Widget * makeWords();
+    void TestSingleton();
+    void ClickMe(Ref *pSender, Widget::TouchEventType type);
+    void menEnterNextScene(Ref* pSender);
+
+    virtual void callBack(void *ctx, const char *str);
+    void callBack(Ref *sender);
+
+
 };
 
 #endif // __HELLOWORLD_SCENE_H__
