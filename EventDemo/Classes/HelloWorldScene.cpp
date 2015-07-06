@@ -9,6 +9,7 @@
 #include "SceneF.h"
 #include "SceneG.h"
 #include "SceneH.h"
+#include "SceneX.h"
 
 USING_NS_CC;
 
@@ -179,7 +180,7 @@ void HelloWorld::selectedItemEvent(Ref *pSender, ListView::EventType type)
             
             if (index==0) {
                 auto  sc = Scene::create();
-                auto  layer = ALayer::create();
+                auto  layer = XLayer::create();
                 sc->addChild(layer);
                 
                 auto reScene = TransitionSlideInR::create(1.0f, sc);

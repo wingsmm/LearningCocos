@@ -15,6 +15,7 @@
 		1AF1DB341B4A26300080BAB5 /* SceneG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1DB321B4A26300080BAB5 /* SceneG.cpp */; };
 		1AF1DB371B4A28720080BAB5 /* SceneE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1DB351B4A28720080BAB5 /* SceneE.cpp */; };
 		1AF1DB3B1B4A36DA0080BAB5 /* SceneH.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1DB391B4A36DA0080BAB5 /* SceneH.cpp */; };
+		1AF1DB411B4A52C60080BAB5 /* SceneX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1DB3F1B4A52C60080BAB5 /* SceneX.cpp */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -88,6 +89,8 @@
 		1AF1DB381B4A2D070080BAB5 /* ApiAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiAccount.h; sourceTree = "<group>"; };
 		1AF1DB391B4A36DA0080BAB5 /* SceneH.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneH.cpp; sourceTree = "<group>"; };
 		1AF1DB3A1B4A36DA0080BAB5 /* SceneH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneH.h; sourceTree = "<group>"; };
+		1AF1DB3F1B4A52C60080BAB5 /* SceneX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneX.cpp; sourceTree = "<group>"; };
+		1AF1DB401B4A52C60080BAB5 /* SceneX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneX.h; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* EventDemo iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EventDemo iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -281,6 +284,8 @@
 				1AF1DB331B4A26300080BAB5 /* SceneG.h */,
 				1AF1DB391B4A36DA0080BAB5 /* SceneH.cpp */,
 				1AF1DB3A1B4A36DA0080BAB5 /* SceneH.h */,
+				1AF1DB3F1B4A52C60080BAB5 /* SceneX.cpp */,
+				1AF1DB401B4A52C60080BAB5 /* SceneX.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -465,6 +470,7 @@
 				1AF1DB251B4A25B50080BAB5 /* SceneA.cpp in Sources */,
 				1AF1DB311B4A26230080BAB5 /* SceneF.cpp in Sources */,
 				1AF1DB371B4A28720080BAB5 /* SceneE.cpp in Sources */,
+				1AF1DB411B4A52C60080BAB5 /* SceneX.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				1AF1DB2E1B4A260F0080BAB5 /* SceneD.cpp in Sources */,
