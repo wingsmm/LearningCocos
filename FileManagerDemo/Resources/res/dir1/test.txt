@@ -1,1 +1,0 @@
-The file is in Resource/dir1 directory.
