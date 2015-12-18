@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>80246CEA-AD3A-44AA-9399-4A9CDCEA82CB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>LayoutTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DDC4E05C4B55FB3144265C303DACAF003E2ECD49</key>
+		<string>https://github.com/wingsmm/LearningCocos.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>LayoutTest/proj.ios_mac/LayoutTest.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DDC4E05C4B55FB3144265C303DACAF003E2ECD49</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/wingsmm/LearningCocos.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DDC4E05C4B55FB3144265C303DACAF003E2ECD49</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DDC4E05C4B55FB3144265C303DACAF003E2ECD49</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LearningCocos</string>
+		</dict>
+	</array>
+</dict>
+</plist>
