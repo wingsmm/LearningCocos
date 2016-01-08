@@ -38,7 +38,7 @@ bool HelloWorld::init()
     std::string info;
     
     
-    for(auto &e : vec ){
+    for(auto &e : vec ){string
         
         auto map = e.asValueMap();
         int id_int = map.at("key").asInt();

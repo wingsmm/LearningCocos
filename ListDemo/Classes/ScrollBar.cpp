@@ -44,8 +44,8 @@ ScrollBar * ScrollBar::create(Scale9Sprite * bar_bg,Scale9Sprite * bar_slider,Ta
 }
 
 /**
-* ³õÊ¼»¯¸÷¸öÊı¾İ
-*/
+ * åˆå§‹åŒ–å„ä¸ªæ•°æ®
+ */
 bool ScrollBar::myInit(Scale9Sprite * bar_bg,Scale9Sprite * bar_slider,TableView * tableView,SclBarDirection dir)
 {
 	if (!Layer::init())
@@ -104,13 +104,13 @@ void ScrollBar::updateSlider()
 		ratio = m_viewSize.width / m_preContentSize.width;
 		m_pSlider->setContentSize(Size(m_viewSize.width * ratio,m_pSlider->getContentSize().height));
 	}
-	//Èç¹ûÒªÏÔÊ¾µÄÄÚÈİµÄ³ß´ç±ÈÊÓÍ¼´óĞ¡Ğ¡£¬ÔòÒş²Ø»¬¿éslider
-	this->setVisible( !(ratio >= 1) );
+    //å¦‚æœè¦æ˜¾ç¤ºçš„å†…å®¹çš„å°ºå¯¸æ¯”è§†å›¾å¤§å°å°ï¼Œåˆ™éšè—æ»‘å—slider
+    this->setVisible( !(ratio >= 1) );
 }
 
 void ScrollBar::update(float dt)
 {
-	//ÅĞ¶Ïµ±Ç°ÄÚÈİÊÇ·ñÓĞÔö¼õ£¬ÒòÎªÄÚÈİµÄÔö¼õ»áÓ°ÏìContenSize,´Ó¶øĞŞ¸ÄsliderµÄ´óĞ¡
+    //åˆ¤æ–­å½“å‰å†…å®¹æ˜¯å¦æœ‰å¢å‡ï¼Œå› ä¸ºå†…å®¹çš„å¢å‡ä¼šå½±å“ContenSize,ä»è€Œä¿®æ”¹sliderçš„å¤§å°
 	auto curContentSize = m_pTarget->getContainer()->getContentSize();
 	if ( !(fabsf(curContentSize.height - m_preContentSize.height) <= 0.00001)  || 
 		!(fabsf(curContentSize.width - m_preContentSize.width) <= 0.00001) )
@@ -119,14 +119,14 @@ void ScrollBar::update(float dt)
 		this->updateSlider();
 	}
 
-	//ÉèÖÃsliderµÄÎ»ÖÃ
+    //è®¾ç½®sliderçš„ä½ç½®
 	if (m_direction == DIR_VERTICAL)
 	{
-		//µ÷Õû»¬¿éµÄÎ»ÖÃ
+        //è°ƒæ•´æ»‘å—çš„ä½ç½®
 		auto curOffset = m_pTarget->getContentOffset() + (m_preContentSize - m_viewSize) / 2;
 		auto sliderOffset = curOffset.y / (m_viewSize.height - curContentSize.height) * 
 			(m_viewSize.height - m_pSlider->getContentSize().height);
-		//ÅĞ¶Ï»¬¿éÊÇ·ñ»¬³ö½çÏŞ
+        //åˆ¤æ–­æ»‘å—æ˜¯å¦æ»‘å‡ºç•Œé™
 		if (fabsf(sliderOffset) > (m_viewSize.height - m_pSlider->getContentSize().height) / 2)
 		{
 			return ;
@@ -148,92 +148,93 @@ void ScrollBar::update(float dt)
 
 bool ScrollBar::onTouchBegan(Touch* touch, Event* pEvent)
 {
-	m_sliderCurPos = m_pSlider->getPosition();
-	m_targetCurPos = m_pTarget->getContentOffset();
-	auto touchPoint = touch->getLocation();
-	m_firstTouch = touchPoint;
-	//½«´¥Ãşµã×ªÎªÔÚµ±Ç°×Ó²ãÏÂµÄ×ø±ê
-	touchPoint = this->convertToNodeSpace(touchPoint);
-	//Ö»ÏìÓ¦µã»÷ÁË»¬¿é±³¾°µÄ´¥Ãş
-	if (!m_pBg->getBoundingBox().containsPoint(touchPoint))
-	{
-		return false;
-	}
-	//Èç¹ûÏÈµã»÷ÁË»¬¿é£¬ÔòÉèÖÃ±êÖ¾
-	if (m_pSlider->getBoundingBox().containsPoint(touchPoint))
-	{
-		m_sliderTouched = true;
-	}
-	else//Èç¹ûÃ»ÓĞµã»÷»¬¿é£¬Ôòµã»÷µÄÊÇ»¬¿é±³¾°Í¼
-	{
-		if (m_direction == DIR_VERTICAL)
-		{
-			//Í¨¹ıµ÷Õûm_pTargetµÄÆ«ÒÆ£¬´Ó¶øµ÷ÕûÁË»¬¿ésliderµÄÎ»ÖÃ£¬ÒòÎªupdateº¯Êı»áÒ»Ö±¼àÌım_pTargetµÄÆ«ÒÆ
-			auto offset = touchPoint.y - m_sliderCurPos.y;
-			if (touchPoint.y <= 0)
-			{
-				offset += m_pSlider->getContentSize().height / 2;
-			} 
-			else
-			{
-				offset -= m_pSlider->getContentSize().height / 2;
-			}
-			auto newOff = m_targetCurPos.y + offset / (m_pSlider->getContentSize().height - m_viewSize.height) 
-				* (m_preContentSize.height - m_viewSize.height);
-			m_pTarget->setContentOffset(Vec2(0,newOff));
-		}
-		else if (m_direction == DIR_HORIZENTAL)
-		{
-			auto offset = touchPoint.x - m_sliderCurPos.x;
-			if (touchPoint.x <= 0)
-			{
-				offset += m_pSlider->getContentSize().width / 2;
-			} 
-			else
-			{
-				offset -= m_pSlider->getContentSize().width / 2;
-			}
-			auto newOff = m_targetCurPos.x + offset / (m_viewSize.width - m_pSlider->getContentSize().width) 
-				* (m_preContentSize.width - m_viewSize.width);
-			m_pTarget->setContentOffset(Vec2(newOff,0));
-		}
-	}
-	return true;
+    m_sliderCurPos = m_pSlider->getPosition();
+    m_targetCurPos = m_pTarget->getContentOffset();
+    auto touchPoint = touch->getLocation();
+    m_firstTouch = touchPoint;
+    //å°†è§¦æ‘¸ç‚¹è½¬ä¸ºåœ¨å½“å‰å­å±‚ä¸‹çš„åæ ‡
+    touchPoint = this->convertToNodeSpace(touchPoint);
+    //åªå“åº”ç‚¹å‡»äº†æ»‘å—èƒŒæ™¯çš„è§¦æ‘¸
+    if (!m_pBg->getBoundingBox().containsPoint(touchPoint))
+    {
+        return false;
+    }
+    //å¦‚æœå…ˆç‚¹å‡»äº†æ»‘å—ï¼Œåˆ™è®¾ç½®æ ‡å¿—
+    if (m_pSlider->getBoundingBox().containsPoint(touchPoint))
+    {
+        m_sliderTouched = true;
+    }
+    else//å¦‚æœæ²¡æœ‰ç‚¹å‡»æ»‘å—ï¼Œåˆ™ç‚¹å‡»çš„æ˜¯æ»‘å—èƒŒæ™¯å›¾
+    {
+        if (m_direction == DIR_VERTICAL)
+        {
+            //é€šè¿‡è°ƒæ•´m_pTargetçš„åç§»ï¼Œä»è€Œè°ƒæ•´äº†æ»‘å—sliderçš„ä½ç½®ï¼Œå› ä¸ºupdateå‡½æ•°ä¼šä¸€ç›´ç›‘å¬m_pTargetçš„åç§»
+            auto offset = touchPoint.y - m_sliderCurPos.y;
+            if (touchPoint.y <= 0)
+            {
+                offset += m_pSlider->getContentSize().height / 2;
+            }
+            else
+            {
+                offset -= m_pSlider->getContentSize().height / 2;
+            }
+            auto newOff = m_targetCurPos.y + offset / (m_pSlider->getContentSize().height - m_viewSize.height)
+            * (m_preContentSize.height - m_viewSize.height);
+            m_pTarget->setContentOffset(Vec2(0,newOff));
+        }
+        else if (m_direction == DIR_HORIZENTAL)
+        {
+            auto offset = touchPoint.x - m_sliderCurPos.x;
+            if (touchPoint.x <= 0)
+            {
+                offset += m_pSlider->getContentSize().width / 2;
+            }
+            else
+            {
+                offset -= m_pSlider->getContentSize().width / 2;
+            }
+            auto newOff = m_targetCurPos.x + offset / (m_viewSize.width - m_pSlider->getContentSize().width)
+            * (m_preContentSize.width - m_viewSize.width);
+            m_pTarget->setContentOffset(Vec2(newOff,0));
+        }
+    }
+    return true;
 }
+
 void ScrollBar::onTouchMoved(Touch *pTouch, Event *pEvent)
 {
-	//Ö»ÏìÓ¦µã»÷ÁË»¬¿éµÄÒÆ¶¯
-	if (m_sliderTouched)
-	{
-		auto offPos = pTouch->getLocation() - m_firstTouch;
-		if (m_direction == DIR_VERTICAL)
-		{
-			//Í¨¹ıµ÷Õûm_pTargetµÄÆ«ÒÆ£¬´Ó¶øµ÷ÕûÁË»¬¿ésliderµÄÎ»ÖÃ£¬ÒòÎªupdateº¯Êı»áÒ»Ö±¼àÌım_pTargetµÄÆ«ÒÆ
-			auto newOff = m_sliderCurPos.y + offPos.y;
-			//ÅĞ¶Ï»¬¿éÊÇ·ñ»¬³ö½çÏŞ
-			if (fabsf(newOff) > (m_viewSize.height - m_pSlider->getContentSize().height) / 2)
-			{
-				(newOff < 0 ? (newOff = (m_pSlider->getContentSize().height - m_viewSize.height) / 2) : 
-					(newOff = (m_viewSize.height - m_pSlider->getContentSize().height) / 2));
-			}
-			newOff -= m_sliderCurPos.y;
-			m_pTarget->setContentOffset(Vec2(0,
-				m_targetCurPos.y + newOff / (m_pSlider->getContentSize().height - m_viewSize.height) 
-				* (m_preContentSize.height - m_viewSize.height)));
-		}
-		else if (m_direction == DIR_HORIZENTAL)
-		{
-			auto newOff = m_sliderCurPos.x + offPos.x;
-			if (fabsf(newOff) > (m_viewSize.width - m_pSlider->getContentSize().width) / 2)
-			{
-				(newOff < 0 ? (newOff = (m_pSlider->getContentSize().width - m_viewSize.width) / 2) : 
-					(newOff = (m_viewSize.width - m_pSlider->getContentSize().width) / 2));
-			}
-			newOff -= m_sliderCurPos.x;
-			m_pTarget->setContentOffset(Vec2(m_targetCurPos.x + newOff / (m_viewSize.width - m_pSlider->getContentSize().width) 
-				* (m_preContentSize.width - m_viewSize.width),0));
-		}
-	}
+    //åªå“åº”ç‚¹å‡»äº†æ»‘å—çš„ç§»åŠ¨
+    if (m_sliderTouched)
+    {
+        auto offPos = pTouch->getLocation() - m_firstTouch;
+        if (m_direction == DIR_VERTICAL)
+        {
+            //é€šè¿‡è°ƒæ•´m_pTargetçš„åç§»ï¼Œä»è€Œè°ƒæ•´äº†æ»‘å—sliderçš„ä½ç½®ï¼Œå› ä¸ºupdateå‡½æ•°ä¼šä¸€ç›´ç›‘å¬m_pTargetçš„åç§»
+            auto newOff = m_sliderCurPos.y + offPos.y;
+            //åˆ¤æ–­æ»‘å—æ˜¯å¦æ»‘å‡ºç•Œé™
+            if (fabsf(newOff) > (m_viewSize.height - m_pSlider->getContentSize().height) / 2)
+            {
+                (newOff < 0 ? (newOff = (m_pSlider->getContentSize().height - m_viewSize.height) / 2) :
+                 (newOff = (m_viewSize.height - m_pSlider->getContentSize().height) / 2));
+            }
+            newOff -= m_sliderCurPos.y;
+            m_pTarget->setContentOffset(Vec2(0,
+                                             m_targetCurPos.y + newOff / (m_pSlider->getContentSize().height - m_viewSize.height)
+                                             * (m_preContentSize.height - m_viewSize.height)));
+        }
+        else if (m_direction == DIR_HORIZENTAL)
+        {
+            auto newOff = m_sliderCurPos.x + offPos.x;
+            if (fabsf(newOff) > (m_viewSize.width - m_pSlider->getContentSize().width) / 2)
+            {
+                (newOff < 0 ? (newOff = (m_pSlider->getContentSize().width - m_viewSize.width) / 2) :
+                 (newOff = (m_viewSize.width - m_pSlider->getContentSize().width) / 2));
+            }
+            newOff -= m_sliderCurPos.x;
+            m_pTarget->setContentOffset(Vec2(m_targetCurPos.x + newOff / (m_viewSize.width - m_pSlider->getContentSize().width)
+                                             * (m_preContentSize.width - m_viewSize.width),0));
+        }  
+    }  
 }
 
 void ScrollBar::onTouchEnded(Touch *pTouch, Event *pEvent)

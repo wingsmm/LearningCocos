@@ -19,9 +19,9 @@ class ScrollBar : public cocos2d::Layer
 public:
 	ScrollBar();
 	~ScrollBar();
-	/**
-	* ÒòÎª¾Å¹¬Í¼²»ÄÜËõĞ¡µ½±ÈÊµ¼ÊÍ¼Æ¬ÒªĞ¡£¬ËùÒÔ´«ÈëµÄÍ¼Æ¬µÄÊµ¼Ê´óĞ¡Òª×ã¹»Ğ¡£¬·ñÔòsliderµÄ´óĞ¡»áÓĞÎÊÌâ
-	*/
+    /**
+     * å› ä¸ºä¹å®«å›¾ä¸èƒ½ç¼©å°åˆ°æ¯”å®é™…å›¾ç‰‡è¦å°ï¼Œæ‰€ä»¥ä¼ å…¥çš„å›¾ç‰‡çš„å®é™…å¤§å°è¦è¶³å¤Ÿå°ï¼Œå¦åˆ™sliderçš„å¤§å°ä¼šæœ‰é—®é¢˜
+     */
 	static ScrollBar * create(Scale9Sprite * bar_bg,Scale9Sprite * bar_slider,TableView * tableView,SclBarDirection dir);
 	static ScrollBar * create(const char * bar_bgFile,const char * bar_sliderFile,TableView * tableView,SclBarDirection dir);
 	bool myInit(Scale9Sprite * bar_bg,Scale9Sprite * bar_slider,TableView * tableView,SclBarDirection dir);
@@ -32,9 +32,9 @@ protected:
 	virtual void onTouchEnded(Touch *pTouch, Event *pEvent);
 
 	virtual void update(float dt) override;
-	/**
-	* ¶¯Ì¬¸Ä±äsliderµÄ´óĞ¡
-	*/
+    /**
+     * åŠ¨æ€æ”¹å˜sliderçš„å¤§å°
+     */
 	void updateSlider();
 
 private:
